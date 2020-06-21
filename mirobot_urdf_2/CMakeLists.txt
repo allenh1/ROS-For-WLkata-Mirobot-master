@@ -28,7 +28,14 @@ target_link_libraries(mirobot_write_node ${catkin_LIBRARIES})
 
 find_package(roslaunch)
 
-foreach(dir config launch meshes urdf)
+install(
+  TARGETS mirobot_write_node
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+foreach(dir launch meshes urdf)
 	install(DIRECTORY ${dir}/
 		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)
